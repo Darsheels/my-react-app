@@ -4,7 +4,7 @@ export default function SideBar() {
             <div className="sidebar-title">Noted</div>
 
             <div className="sidebar-section">
-                <div className="sidebar-item.active">All Tasks</div>
+                <div className="sidebar-item active">All Tasks</div>
                 <div className="sidebar-item">Today</div>
                 <div className="sidebar-item">Completed</div>
             </div>
