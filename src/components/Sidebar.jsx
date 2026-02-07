@@ -1,4 +1,15 @@
+import { useState } from "react";
+
 export default function SideBar() {
+    const [newCategory , setNewCategory] = useState("");
+    const [categories , setCategories] = useState(["Personal","School","Work"]);
+    const addCategory = () => {
+        if (newCategory.trim() === "") return;
+        
+        setCategories([...categories , newCategory]);
+        setNewCategory("");
+    };
+
     return (
         <div className="sidebar">
             <div className="sidebar-title">Noted</div>
@@ -11,9 +22,22 @@ export default function SideBar() {
 
             <div className="sidebar-section">
                 <div className="sidebar-title">Categories</div>
-                <div className="sidebar-item">Personal</div>
-                <div className="sidebar-item">School</div>
-                <div className="sidebar-item">Work</div>
+
+                {categories.map((cat,index) => (
+                    <div key={index} className="sidebar-item">
+                    {cat}
+                    </div>
+                ))}
+            </div>
+
+            <div className="add-category">
+                <input className="category-input"
+                placeholder="New category"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}/>
+                <button className="category-button" onClick={addCategory}>
+                Add
+                </button>
             </div>
         </div>
     );
