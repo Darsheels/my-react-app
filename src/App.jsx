@@ -1,12 +1,11 @@
-import AddTaskInput from "./components/AddTaskForm";
-
-
-
+import AddTask from "./components/AddTaskForm";
+import SideBar from "./components/Sidebar";
 
 export default function App() {
     return (
-      <div>
-          <AddTaskInput/>
+      <div className="app-container">
+        <SideBar/>
+        <AddTask/>
       </div>
 
     );

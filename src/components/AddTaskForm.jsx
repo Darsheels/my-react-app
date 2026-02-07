@@ -1,9 +1,8 @@
-export default function AddTaskInput() {
+export default function AddTask() {
     return (
-        <div className="TaskInput">
-            <input placeholder="Add A Task"></input>
+        <div className="bottom">
+            <input className="AddTaskInput" placeholder="Add A Task"></input>
+            <button className="AddTaskButton">Add Task</button>
         </div>
-
     );
-
 }
