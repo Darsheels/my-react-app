@@ -1,11 +1,10 @@
 import { useState } from "react";
 
-export default function SideBar() {
+export default function SideBar({categories , setCategories , selectedCatagory , setSelectedCatagory}) {
     const [newCategory , setNewCategory] = useState("");
-    const [categories , setCategories] = useState(["Personal","School","Work"]);
+    
     const addCategory = () => {
         if (newCategory.trim() === "") return;
-        
         setCategories([...categories , newCategory]);
         setNewCategory("");
     };
@@ -15,16 +14,16 @@ export default function SideBar() {
             <div className="sidebar-title">Noted</div>
 
             <div className="sidebar-section">
-                <div className="sidebar-item active">All Tasks</div>
-                <div className="sidebar-item">Today</div>
-                <div className="sidebar-item">Completed</div>
+                <div className={`sidebar-item ${selectedCatagory === "All Tasks" ? "active" : ""}`} onClick={() => setSelectedCatagory("All Tasks")}>All Tasks</div>
+                <div className={`sidebar-item ${selectedCatagory === "Today" ? "active" : ""}`} onClick={() => setSelectedCatagory("Today")}>Today</div>
+                <div className={`sidebar-item ${selectedCatagory === "Completed" ? "active" : ""}`} onClick={() => setSelectedCatagory("Completed")}>Completed</div>
             </div>
 
             <div className="sidebar-section">
                 <div className="sidebar-title">Categories</div>
 
                 {categories.map((cat,index) => (
-                    <div key={index} className="sidebar-item">
+                    <div key={index} className={`sidebar-item ${selectedCatagory === cat ? "active" : ""}`} onClick={() => setSelectedCatagory(cat)}>
                     {cat}
                     </div>
                 ))}

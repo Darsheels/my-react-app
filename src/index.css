@@ -120,8 +120,8 @@ body {
 .task-list {
     display: flex;
     flex-direction: column;
-    gap: 0px;
     margin-right: 10px;
+    gap: 0px;
 }
 
 .task-item {
@@ -137,7 +137,6 @@ body {
     width: 160px;
     height: 50px;
     margin-top: 25px;
-    gap: 2px;
 }
 
 .task-item:hover {
@@ -240,7 +239,7 @@ body {
 }
 
 .app.dark .bottom {
-    background: rgb(15, 15, 15);
+    background: rgb(43, 43, 43);
 }
 
 .add-category {
@@ -273,8 +272,21 @@ body {
    border: 1px solid white;
 }
 
+.category-button:active {
+    transform: scale(0.96);
+}
+
 .app.dark .category-input {
     background: rgb(41, 41, 41);
     color: white;
     border: 1px solid white;
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task-item.completed {
+    border-color: #b5b5b5;
 }
