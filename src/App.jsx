@@ -1,4 +1,3 @@
-import AddTask from "./components/AddTaskForm";
 import SideBar from "./components/Sidebar";
 import TaskBar from "./components/TaskBar";
 import { useState } from "react";
@@ -16,7 +15,6 @@ export default function App() {
         <SideBar/>
         <div className="main-content">
           <TaskBar/>
-          <AddTask/>
           <button className="dark-mode-button" onClick={toggleTheme}>DarkMode</button>
         </div>
       </div>
