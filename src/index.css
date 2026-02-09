@@ -115,6 +115,7 @@ body {
     font-weight: 600;
     color: black;
     margin-left: 15px;
+    
 }
 
 .task-list {
@@ -137,6 +138,10 @@ body {
     width: 160px;
     height: 50px;
     margin-top: 25px;
+}
+
+.task-title {
+    font-size: 15px;
 }
 
 .task-item:hover {
@@ -208,12 +213,14 @@ body {
 .app.dark .AddTaskInput {
     background: rgb(43, 43, 43);
     color: white;
+    
 
 }
 
 .app.dark .AddTaskButton {
     background: rgb(43, 43, 43);
     color: white;
+  
     
 }
 
@@ -282,11 +289,11 @@ body {
     border: 1px solid white;
 }
 
-.task-item.completed .task-title {
+/* .task-item.completed .task-title {
     text-decoration: line-through;
     opacity: 0.6;
 }
 
 .task-item.completed {
     border-color: #b5b5b5;
-}
+} */

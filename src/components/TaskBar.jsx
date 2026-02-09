@@ -3,8 +3,6 @@ import { useState } from "react";
 export default function TaskBar({tasks , setTasks , selectedCatagory}) {
     const [newTask , setNewTask] = useState("");
 
-    
-
     const addTask = () => {
         if (newTask.trim() === "") return;
 
