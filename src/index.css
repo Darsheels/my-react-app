@@ -135,13 +135,14 @@ body {
     align-items: center;
     transition: 0.15s ease;
     color: black;
-    width: 160px;
+    width: 190px;
     height: 50px;
     margin-top: 25px;
 }
 
 .task-title {
     font-size: 15px;
+    padding: 0px 10px;
 }
 
 .task-item:hover {
@@ -161,7 +162,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    font-size: 20px ;
+    font-size: 10px ;
 }
 
 .task-timestamp {
@@ -297,3 +298,10 @@ body {
 .task-item.completed {
     border-color: #b5b5b5;
 } */
+
+.delete-btn {
+    padding: 2px 5px;
+    margin-left: 0px;
+    background: black;
+    color: white;
+}

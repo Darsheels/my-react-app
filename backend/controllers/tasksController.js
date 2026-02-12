@@ -22,3 +22,17 @@ export function toggleTask(req, res) {
 
   res.json({ success: true });
 }
+
+export function deleteTask(req,res) {
+ const id = Number(req.params.id);
+
+ const index = tasks.findIndex(task => task.id === id);
+ if (index === -1) {
+    return res.status(404).json({ error: "Task not found"});
+ }
+
+
+ tasks.splice(index , 1);
+ res.json({success: true});
+
+}
