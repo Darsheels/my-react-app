@@ -1,4 +1,7 @@
 import { useState } from "react";
+import TrashCan from "../assets/TrashCan.jfif";
+
+
 export default function TaskBar({tasks , setTasks , selectedCatagory}) {
     const [newTask , setNewTask] = useState("");
 
@@ -83,7 +86,9 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
                             <div className="task-title">{task.title}</div>
                             <div className="task-timestamp">{task.createdAt}</div>
                         </div>
-                        <button className="delete-btn" onClick={() => deleteTask(task.id)}>X</button>
+                        <button className="delete-btn" onClick={() => deleteTask(task.id)}>
+                            <img src={TrashCan} alt="delete" className="deleted-icon"/>
+                        </button>
                     </div>
                 )})}
             </div>

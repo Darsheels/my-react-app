@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TrashCan from "../assets/TrashCan.jfif"
 
 export default function SideBar({categories , setCategories , selectedCatagory , setSelectedCatagory}) {
     const [newCategory , setNewCategory] = useState("");
@@ -25,6 +26,17 @@ export default function SideBar({categories , setCategories , selectedCatagory ,
 
     };
 
+
+    const  deleteCategory = (name) => {
+        fetch(`http://localhost:5000/categories/${name}`, {
+        method: "DELETE"
+        })
+             .then(() => {
+                setCategories(prev => prev.filter(category => category !== name));
+             })
+             .catch(err => console.error("Error deleting task:" , err));
+    }
+
     return (
         <div className="sidebar">
             <div className="add-category">
@@ -50,7 +62,15 @@ export default function SideBar({categories , setCategories , selectedCatagory ,
                 {categories.map((cat,index) => (
                     <div key={index} className={`sidebar-item ${selectedCatagory === cat ? "active" : ""}`} onClick={() => setSelectedCatagory(cat)}>
                     {cat}
+
+                    <button className="cat-delete" onClick={(e) => {
+                        e.stopPropagation();
+                        deleteCategory(cat);
+                        }}>
+                        <img src= {TrashCan} alt="delete" className="deletedcat-icon"></img>
+                    </button>
                     </div>
+                    
                 ))}
             </div>
 

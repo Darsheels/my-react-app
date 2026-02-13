@@ -91,7 +91,7 @@ body {
 }
 
 .sidebar-item {
-    padding:10px 14px;
+    padding:10px 20px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 15px;
@@ -295,9 +295,42 @@ body {
 }
 
 .delete-btn {
-    padding: 2px 5px;
+    padding: 0;
     margin-left: 0px;
-    background: black;
+    background: none;
     color: white;
+    cursor: pointer;
 }
 
+.deleted-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    border-radius: 1px;
+}
+
+.delete-btn:hover .deleted-icon {
+    opacity: 1;
+}
+
+.deletedcat-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    border-radius: 1px;
+}
+
+
+
+.cat-delete {
+    padding: 0 ;
+    margin-right: 0px;
+    margin-left: 20px;
+    background: none;
+    color: white;
+    cursor: pointer;
+}

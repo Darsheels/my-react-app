@@ -21,3 +21,16 @@ export function addCategories(req,res) {
 }
 
 
+export function deleteCategories(req,res) {
+  const {name} = req.body;
+  const index  = categories.indexOf(name);
+  
+  if (index === -1) {
+    return res.status(404).json({ error: "Category not found"});
+  }
+  
+  categories.splice(index , 1);
+  res.json({success: true});
+  
+}
+
