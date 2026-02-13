@@ -5,8 +5,24 @@ export default function SideBar({categories , setCategories , selectedCatagory ,
     
     const addCategory = () => {
         if (newCategory.trim() === "") return;
-        setCategories([...categories , newCategory]);
-        setNewCategory("");
+
+        fetch("http://localhost:5000/categories" , {
+            method: "POST" ,
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify({name: newCategory})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    return;
+                }
+
+                setCategories(prev => [...prev , data.name]);
+                setNewCategory("");
+            })
+            .catch(err => console.error("Error adding category" , err))
+
     };
 
     return (

@@ -1,3 +1,4 @@
+
 import SideBar from "./components/Sidebar";
 import TaskBar from "./components/TaskBar";
 import { useEffect, useState } from "react";
@@ -10,8 +11,20 @@ export default function App() {
 
   const [tasks , setTasks] = useState([]);
   const [selectedCatagory , setSelectedCatagory] = useState("All Tasks")
-  const [categories , setCategories] = useState(["Personal","School","Work"]);
+  const [categories , setCategories] = useState([]);
 
+
+
+  //connecting categories to backend
+  useEffect(() => {
+     fetch("http://localhost:5000/categories")
+      .then(res => res.json())
+      .then(data => setCategories(data))
+      .catch(err => console.error("Error loading categories" , err));
+  }, []);
+  //for categories
+  
+  //conn tasks 
   useEffect(() => {
     fetch("http://localhost:5000/tasks")
       .then(res => res.json())
@@ -19,6 +32,8 @@ export default function App() {
       .catch(err => console.error("Error loading tasks" , err));
       } , []);
       
+  //for tasks
+
     return (
       
       <div className={darkMode ? "app dark" : "app"}>

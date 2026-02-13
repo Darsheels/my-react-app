@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { deleteTask } from "../../backend/controllers/tasksController";
-
 export default function TaskBar({tasks , setTasks , selectedCatagory}) {
     const [newTask , setNewTask] = useState("");
 
@@ -63,7 +61,7 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
                 setTasks(prev => prev.filter(task => task.id !== id));
             })
             .catch(err => console.error("Error deleting task:" , err));
-    };
+    };  
 
 
     const filteredTasks = selectedCatagory === "All Tasks"

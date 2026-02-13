@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { getCategories , addCategories , deleteCategory } from "../controllers/categoriesController";
+import { getCategories , addCategories } from "../controllers/categoriesController.js";
 
 
-const router = Router()
+const router = Router();
 
 router.get("/" , getCategories);
 router.post("/" , addCategories);
-router.delete("./:id" , deleteCategory)
+
 
 export default router;
