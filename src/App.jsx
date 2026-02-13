@@ -12,15 +12,13 @@ export default function App() {
   const [selectedCatagory , setSelectedCatagory] = useState("All Tasks")
   const [categories , setCategories] = useState(["Personal","School","Work"]);
 
-  //new stuff
   useEffect(() => {
     fetch("http://localhost:5000/tasks")
       .then(res => res.json())
       .then(data => setTasks(data))
       .catch(err => console.error("Error loading tasks" , err));
       } , []);
-  //new stuff
-  
+      
     return (
       
       <div className={darkMode ? "app dark" : "app"}>

@@ -11,6 +11,15 @@ export default function SideBar({categories , setCategories , selectedCatagory ,
 
     return (
         <div className="sidebar">
+            <div className="add-category">
+                <input className="category-input"
+                placeholder="New category"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}/>
+                <button className="category-button" onClick={addCategory}>
+                Add
+                </button>
+            </div>
             <div className="sidebar-title">Noted</div>
 
             <div className="sidebar-section">
@@ -29,15 +38,7 @@ export default function SideBar({categories , setCategories , selectedCatagory ,
                 ))}
             </div>
 
-            <div className="add-category">
-                <input className="category-input"
-                placeholder="New category"
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}/>
-                <button className="category-button" onClick={addCategory}>
-                Add
-                </button>
-            </div>
+            
         </div>
     );
 }

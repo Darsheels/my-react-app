@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-
+import CategoriesRouter from "./routes/categories.js"
 import TasksRouter from "./routes/tasks.js";
 
 const app = express();
@@ -8,6 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/tasks" , TasksRouter);
+app.use("/categories" , CategoriesRouter)
+
 
 app.get("/" , (req,res) => {
     res.send("Backend is running")

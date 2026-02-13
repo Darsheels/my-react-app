@@ -18,8 +18,8 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
                 }),
             completed: false,
             category: selectedCatagory === "All Tasks" ? "Uncategorized" : selectedCatagory
-        };0
-        //new stuff
+        };
+
         fetch("http://localhost:5000/tasks" , {
             method:"POST",
             headers: {"Content-Type" : "application/json"},
@@ -28,17 +28,14 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
             .then(res => res.json())
             .then(newTask => {
                 setTasks(prev => [...prev, newTask]);
-                setNewTasks("");
+                setNewTask("");
             })
             .catch(err => console.error("error adding task:" , err));
-            //new stuff
-        // setTasks([...tasks , taskObj]);
-        // setNewTask("");
     };
 
 
     const toggleComplete = (id) => {
-        //new stuff
+        
        fetch(`http://localhost:5000/tasks/${id}` , {
         method: "PATCH"
     })
@@ -52,14 +49,11 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
             );
         })
         .catch(err => console.error("Error toggling task" , err));
-        //new stuff
+      
     };
 
 
-    // setTasks(tasks.map(task => 
-        //     task.id === id ? {...task , completed: !task.completed} : task
-        // )
-    // );
+  
 
     const deleteTask = (id) => {
         fetch(`http://localhost:5000/tasks/${id}` , {

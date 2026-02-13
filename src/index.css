@@ -65,12 +65,15 @@ body {
     height: 100vh;
     background: #ffffff;
     border-right: 1px solid #e5e5e5;
-    padding: 24px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
+.sidebar::-webkit-scrollbar { width: 8px }
 
 
 .sidebar-title {
@@ -78,6 +81,7 @@ body {
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 10px;
+
 }
 
 .sidebar-section {
@@ -127,7 +131,7 @@ body {
 
 .task-item {
     background: #ffffff;
-    padding: 14px 18px;
+    padding: 14px 10px;
     border-radius: 12px;
     border: 1px solid #eaeaea;
     display: flex;
@@ -142,7 +146,7 @@ body {
 
 .task-title {
     font-size: 15px;
-    padding: 0px 10px;
+    padding: 0px 0px;
 }
 
 .task-item:hover {
@@ -290,18 +294,10 @@ body {
     border: 1px solid white;
 }
 
-/* .task-item.completed .task-title {
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-
-.task-item.completed {
-    border-color: #b5b5b5;
-} */
-
 .delete-btn {
     padding: 2px 5px;
     margin-left: 0px;
     background: black;
     color: white;
 }
+
