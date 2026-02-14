@@ -1,4 +1,4 @@
-import categories from "../data/categories.js";
+
 import db from "../db.js";
 
 export function getCategories(req,res) {

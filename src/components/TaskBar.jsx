@@ -11,12 +11,6 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
         const taskObj = {
             id: Date.now(),
             title: newTask,
-            createdAt: new Date().toLocaleString("en-US" , {
-                month: "short",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit"
-                }),
             completed: false,
             category: selectedCatagory === "All Tasks" ? "Uncategorized" : selectedCatagory
         };
@@ -27,8 +21,8 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
             body: JSON.stringify(taskObj)
         })
             .then(res => res.json())
-            .then(newTask => {
-                setTasks(prev => [...prev, newTask]);
+            .then(returnedTask => {
+                setTasks(prev => [...prev, returnedTask]);
                 setNewTask("");
             })
             .catch(err => console.error("error adding task:" , err));

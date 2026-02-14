@@ -11,7 +11,7 @@ db.exec(`
     CREATE TABLE IF NOT EXISTS tasks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT NOT NUll,
-        categorry TEXT,
+        category TEXT,
         completed INTEGER DEFAULT 0,
         createdAt TEXT
     );
