@@ -1,38 +1,47 @@
 import tasks from "../data/tasks.js";
+import db from "../db.js";
+
+
 
 export function getTasks(req, res) {
-  res.json(tasks);
+  const rows = db.prepare("SELECT * FROM tasks").all()
+  res.json(rows);
 }
 
 export function addTask(req, res) {
-  const newTask = req.body;
-  tasks.push(newTask);
-  res.json(newTask);
+  const {id,title , category , completed , createdAt} = req.body;
+
+  db.prepare(`
+    INSERT INTO tasks (id , title , category , completed , createdAt)
+    VALUES (?,?,?,?,?)
+    `).run(id , title,category , completed, createdAt);
+
+    res.json(req.body);
 }
 
 export function toggleTask(req, res) {
-  const id = Number(req.params.id);
+  const { id } = req.params;
 
-  const updated = tasks.map(task =>
-    task.id === id ? { ...task, completed: !task.completed } : task
-  );
+  const task = db.prepare("SELECT completed from tasks WHERE id = ?").get(id);
 
-  tasks.length = 0;
-  tasks.push(...updated);
+  if (!task) return res.status(404).json({error : "Task not found"});
+
+  const newStatus =  task.completed ? 0 : 1;
+
+  db.prepare("UPDATE tasks SET completed = ? WHERE id = ?").run(newStatus , id);
 
   res.json({ success: true });
 }
 
 export function deleteTask(req,res) {
- const id = Number(req.params.id);
+ const { id } = req.params;
+ 
+ const result = db.prepare("DELETE FROM tasks WHERE id = ?").run(id);
 
- const index = tasks.findIndex(task => task.id === id);
- if (index === -1) {
-    return res.status(404).json({ error: "Task not found"});
+ if (result.changes === 0) {
+  return res.status(404).json({error : "Task not found"});
  }
 
-
- tasks.splice(index , 1);
  res.json({success: true});
 
 }

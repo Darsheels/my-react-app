@@ -1,35 +1,32 @@
 import categories from "../data/categories.js";
+import db from "../db.js";
 
 export function getCategories(req,res) {
-    res.json(categories);
+  const rows = db.prepare("SELECT name FROM categories").all(); 
+  res.json(rows.map(r => r.name));
 }
 
 export function addCategories(req,res) {
   const {name} = req.body;
 
-  if (!name || name.trim() === "") {
-    return res.status(400).json({error : "Category name is requred"});
-  }
-
-  if (categories.includes(name)) {
-    return res.status(400).json({error: "Category already exists"});
-  }
-
-  categories.push(name);
-  res.json({success: true, name});
-
+ try {
+  db.prepare("INSERT INTO categories (name) VALUES (?)").run(name);
+  res.json({success:true , name});
+ } catch (err) {
+  res.status(400).json({error : "Category already exists"});
+ }
 }
 
 
 export function deleteCategories(req,res) {
-  const {name} = req.body;
-  const index  = categories.indexOf(name);
+  const {name} = req.params;
+  const results = db.prepare("DELETE FROM categories WHERE name = ?").run(name)
   
-  if (index === -1) {
+  if (results.changes === 0) {
     return res.status(404).json({ error: "Category not found"});
   }
   
-  categories.splice(index , 1);
+  
   res.json({success: true});
   
 }

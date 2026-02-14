@@ -69,8 +69,7 @@ export default function SideBar({categories , setCategories , selectedCatagory ,
                         }}>
                         <img src= {TrashCan} alt="delete" className="deletedcat-icon"></img>
                     </button>
-                    </div>
-                    
+                    </div> 
                 ))}
             </div>
 

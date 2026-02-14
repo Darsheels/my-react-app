@@ -49,12 +49,9 @@ export default function TaskBar({tasks , setTasks , selectedCatagory}) {
                 )
             );
         })
-        .catch(err => console.error("Error toggling task" , err));
-      
+        .catch(err => console.error("Error toggling task" , err));      
     };
 
-
-  
 
     const deleteTask = (id) => {
         fetch(`http://localhost:5000/tasks/${id}` , {

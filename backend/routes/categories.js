@@ -6,6 +6,6 @@ const router = Router();
 
 router.get("/" , getCategories);
 router.post("/" , addCategories);
-router.delete("/:name" , deleteCategories)
+router.delete("/:name" , deleteCategories);
 
 export default router;

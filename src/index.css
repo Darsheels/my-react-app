@@ -97,6 +97,10 @@ body {
     font-size: 15px;
     color: black;
     transition: background 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
 }
 
 .sidebar-item:hover {
