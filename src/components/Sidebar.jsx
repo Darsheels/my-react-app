@@ -52,7 +52,6 @@ export default function SideBar({categories , setCategories , selectedCatagory ,
 
             <div className="sidebar-section">
                 <div className={`sidebar-item ${selectedCatagory === "All Tasks" ? "active" : ""}`} onClick={() => setSelectedCatagory("All Tasks")}>All Tasks</div>
-                <div className={`sidebar-item ${selectedCatagory === "Today" ? "active" : ""}`} onClick={() => setSelectedCatagory("Today")}>Today</div>
                 <div className={`sidebar-item ${selectedCatagory === "Completed" ? "active" : ""}`} onClick={() => setSelectedCatagory("Completed")}>Completed</div>
             </div>
 
